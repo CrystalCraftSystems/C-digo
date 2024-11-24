@@ -5,16 +5,9 @@ class Visitantes{
     public string $idVisitante;
     private string $nomeVisitante;
     private string $descricaoVisitante;
-    public $morador;
+    public array $moradores = [];
 
-    public function setMorador(Moradores $idMorador) { 
-        $this->morador = $idMorador;
-     }
     
-     public function getIdMorador(): string { 
-        return $this->morador->getIdMorador();
-     }
-
     public function getIdVisitante():string
     {
         return $this->idVisitante;
