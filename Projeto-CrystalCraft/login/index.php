@@ -274,7 +274,7 @@ if($_GET['menu']=="horariosAdm"){
 }
 
 if($_GET['menu']=="visitantesAdm"){
-   $visitantes = (new VisitantesBanco())->ListarVisitante();
+   $visitantes = (new VisitantesBanco())->listaVisitanteMorador();
    require __DIR__."/../Administrador/Public/visitantesAdm.php";
 }
 
@@ -299,13 +299,13 @@ if($_GET['menu']=="logout"){
 
 
 if(isset($_SESSION['login'])){
-if($_SESSION['login']==true && $_SESSION['adm']==true &&(isset($_GET['acao']) && $_SESSION['login'])){
+if($_SESSION['login']==true && $_SESSION['adm']==true &&(isset($_GET['acao']) && $_SESSION['login'])&&(($_GET['acao'])!='editar-usuario') &&(($_GET['acao'])!='editar-funcionario') && (($_GET['acao'])!='editar-horario') && (($_GET['acao'])!='editar-visitante') && (($_GET['acao'])!='editar-morador' )&& (($_GET['acao'])!='editar-residencia')){
    $usuarios = (new UsuariosBanco())->ListarUsuario();
    require __DIR__."/../Administrador/Public/usuariosAdm.php";
 
 }
 
-if(($_SESSION['login']==true && $_SESSION['adm']==false)&&(isset($_GET['acao']) && $_SESSION['login'])){
+if(($_SESSION['login']==true && $_SESSION['adm']==false)&&(isset($_GET['acao']) && $_SESSION['login'])&&(($_GET['acao'])!='editar-horario') && (($_GET['acao'])!='editar-visitante')){
    require __DIR__."/../UsuarioComum/Public/inicio.php";
 }
 }else{

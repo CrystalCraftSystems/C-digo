@@ -38,6 +38,19 @@ class Visitantes{
         $this->descricaoVisitante = $descricaoVisitante;
     }
 
+
+
+    public function getMoradores()
+    {
+        return $this->moradores;
+    }
+
+    public function setMoradores($moradores)
+    {
+        $this->moradores = $moradores;
+
+        return $this;
+    }
 }
 
 ?>

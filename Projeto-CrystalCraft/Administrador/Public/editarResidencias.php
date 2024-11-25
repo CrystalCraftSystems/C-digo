@@ -7,7 +7,7 @@
 </style>
 
 <div class="box">
-<h1 class="title has-text-centered"><strong>Cadastrar residências e blocos<strong></h1>
+<h1 class="title has-text-centered"><strong>Editar residências e blocos<strong></h1>
     <form action="./index.php?acao=atualizar-residenciaAdm" method="post">
     <div class="field">
 

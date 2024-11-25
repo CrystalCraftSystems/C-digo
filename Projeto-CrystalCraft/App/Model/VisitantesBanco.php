@@ -20,36 +20,36 @@ class VisitantesBanco
     }
 
 
-    public function cadastrarVisitante($idVisitante, $nomeVisitante, $descricaoVisitante,  $moradores)
+    public function cadastrarVisitante($idVisitante, $nomeVisitante, $descricaoVisitante,$moradorId)
     {
-        $sql = "INSERT INTO visitantes(idvisitante, nomevisitante, descricaovisitante, idmorador) values (:i,:n,:d,:m)";
+        //sql para cadastrar o visitante "isolado" do morador, logo não estará associado ao morador
+        $sql = "INSERT INTO visitantes(idvisitante, nomevisitante, descricaovisitante) values (:i,:n,:d)";
 
+        
         $comando = $this->pdo->prepare($sql);
         $comando->bindValue("i", $idVisitante);
         $comando->bindValue("n", $nomeVisitante);
         $comando->bindValue("d", $descricaoVisitante);
-        $comando->bindValue("m", $moradores);
+     
+        $comando->execute();
 
+        $sql = "INSERT INTO VISITANTESMORADORES (VISITANTEID, MORADORID) VALUES (:VISITANTEID, :MORADORID)";
+        $comando = $this->pdo->prepare($sql);
+        $comando->bindValue(':VISITANTEID', $idVisitante);
+        $comando->bindValue(':MORADORID', $moradorId);
 
         return $comando->execute();
     }
 
-    public function BuscarMoradoresPeloIdVisitante($idVisitante)
+    public function listaVisitanteMorador()
     {
-        $sql = "SELECT * FROM MORADORES  INNER JOIN VISITANTESMORADORES ON MORADORES.IDMORADOR =  VISITANTESMORADORES.MORADORID 
-WHERE VISITANTESMORADORES.VISITANTEID = :IDVISITANTE ";
+        $sql = "SELECT  m.IDMORADOR, v.DESCRICAOVISITANTE, v.NOMEVISITANTE AS visitante,  m.NOMEMORADOR AS morador FROM visitantes v JOIN visitantesmoradores vm ON v.IDVISITANTE = vm.VISITANTEID JOIN moradores m ON vm.MORADORID = m.IDMORADOR ORDER BY m.NOMEMORADOR;";
 
         $comando = $this->pdo->prepare($sql);
-        $comando->bindValue(':IDVISITANTE', $idVisitante);
         $comando->execute();
 
-        $moradores = [];
-        while ($row = $comando->fetch(PDO::FETCH_ASSOC)) {
-            $morador = new Moradores;
-            $morador->setIdMorador($row["IDMORADOR"]);
-            $moradores[] = $morador;
-        }
-        return $moradores;
+      return $comando->fetchAll();
+  
     }
 
     public function hidratar($array)
@@ -62,8 +62,8 @@ WHERE VISITANTESMORADORES.VISITANTEID = :IDVISITANTE ";
             $visitante->setNomeVisitante($valor['NOMEVISITANTE']);
             $visitante->setDescricaoVisitante($valor['DESCRICAOVISITANTE']);
 
-            $moradores = $this->BuscarMoradoresPeloIdVisitante($valor['IDVISITANTE']);
-            $visitante->setIdMorador($moradores);
+         //  $moradores = $this->BuscarMoradoresPeloIdVisitante($valor['IDVISITANTE']);
+           //$visitante->setMoradores($moradores);
 
             $todos[] = $visitante;
         }
@@ -79,7 +79,7 @@ WHERE VISITANTESMORADORES.VISITANTEID = :IDVISITANTE ";
         $visitante->setDescricaoVisitante($array['DESCRICAOVISITANTE']);
 
         $moradores = $this->BuscarMoradoresPeloIdVisitante($array['IDVISITANTE']);
-        $visitante->setIdMorador($moradores);
+        $visitante->setMoradores($moradores);
 
 
 

@@ -7,7 +7,7 @@
 </style>
 
 <div class="box">
-<h1 class="title has-text-centered"><strong>Registrar horários de entrada e saída<strong></h1>
+<h1 class="title has-text-centered"><strong>Editar horários de entrada e saída<strong></h1>
     <form action="./index.php?acao=atualizar-horario" method="post">
        
     <div class="field">

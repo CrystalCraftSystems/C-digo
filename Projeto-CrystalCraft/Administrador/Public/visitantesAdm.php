@@ -1,4 +1,5 @@
-<?php require __DIR__ . "/cabecalhoAdm.php"; ?>
+<?php require __DIR__ . "/cabecalhoAdm.php";
+var_dump($visitantes); ?>
 
 <style>
     h1 {
@@ -16,10 +17,13 @@
         <table class="table is-fullwidth is-striped">
             <thead>
                 <tr>
+                <th>ID Morador</th>
+                <th>ID Morador</th>
                     <th>ID Visitante</th>
                     <th>Nome</th>
-                    <th>Descrição</th>
-                    <th>ID Morador </th>
+                 
+
+              
                    
                 </tr>
             </thead>
@@ -29,15 +33,15 @@
                     
                     <?php foreach ($visitantes as $visitante): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($visitante->getIdVisitante()); ?></td>
-                            <td><?php echo htmlspecialchars($visitante->getNomeVisitante()); ?></td>
-                            <td><?php echo htmlspecialchars($visitante->getDescricaoVisitante()); ?></td>
-                            <td><?php echo htmlspecialchars($visitante->getIdMorador()); ?></td>
+                        <td><?php echo htmlspecialchars($visitante['DESCRICAOVISITANTE']); ?></td>
+                        <td><?php echo htmlspecialchars($visitante['IDMORADOR']); ?></td>
+                            <td><?php echo htmlspecialchars($visitante['visitante']); ?></td>
+                            <td><?php echo htmlspecialchars($visitante['morador']); ?></td>
+                      
+                         
+                         
                             
-                            <td>
-                                <a class="button is-small is-info" href="./index.php?acao=editar-visitante&idVisitante=<?=$visitante->getIdVisitante()?>">Editar</a>
-                                <a class="button is-small is-danger" href="./index.php?acao=excluir-visitante&idVisitante=<?=$visitante->getIdVisitante()?>">Excluir</a>
-                            </td>
+                           
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
