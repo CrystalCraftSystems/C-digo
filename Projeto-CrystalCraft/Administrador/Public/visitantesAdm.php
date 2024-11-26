@@ -17,14 +17,11 @@ var_dump($visitantes); ?>
         <table class="table is-fullwidth is-striped">
             <thead>
                 <tr>
-                <th>ID Morador</th>
-                <th>ID Morador</th>
-                    <th>ID Visitante</th>
-                    <th>Nome</th>
+                <th>ID Visitante</th>
+                <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>ID Morador visitado</th>
                  
-
-              
-                   
                 </tr>
             </thead>
             <tbody>
@@ -33,15 +30,12 @@ var_dump($visitantes); ?>
                     
                     <?php foreach ($visitantes as $visitante): ?>
                         <tr>
+
+                        <td><?php echo htmlspecialchars($visitante['visitante']); ?></td>
+                        <td><?php echo htmlspecialchars($visitante['NOMEVISITANTE']); ?></td>
                         <td><?php echo htmlspecialchars($visitante['DESCRICAOVISITANTE']); ?></td>
-                        <td><?php echo htmlspecialchars($visitante['IDMORADOR']); ?></td>
-                            <td><?php echo htmlspecialchars($visitante['visitante']); ?></td>
-                            <td><?php echo htmlspecialchars($visitante['morador']); ?></td>
-                      
-                         
-                         
-                            
-                           
+                        <td><?php echo htmlspecialchars($visitante['IDMORADOR']); ?></td>     
+                        
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>

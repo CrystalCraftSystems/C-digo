@@ -24,14 +24,13 @@
                     
                     <?php foreach ($visitantes as $visitante): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($visitante->getIdVisitante()); ?></td>
-                            <td><?php echo htmlspecialchars($visitante->getNomeVisitante()); ?></td>
-                            <td><?php echo htmlspecialchars($visitante->getDescricaoVisitante()); ?></td>
-                            <td><?php echo htmlspecialchars($visitante->getIdMorador()); ?></td>
-                            
+                        <td><?php echo htmlspecialchars($visitante['visitante']); ?></td>
+                        <td><?php echo htmlspecialchars($visitante['NOMEVISITANTE']); ?></td>
+                        <td><?php echo htmlspecialchars($visitante['DESCRICAOVISITANTE']); ?></td>
+                        <td><?php echo htmlspecialchars($visitante['IDMORADOR']); ?></td>    
                             <td>
-                                <a class="button is-small is-info" href="./index.php?acao=editar&idVisitante=<?=$visitante->getIdVisitante()?>">Editar</a>
-                                <a class="button is-small is-danger" href="./index.php?acao=excluir&idVisitante=<?=$visitante->getIdVisitante()?>">Excluir</a>
+                                <a class="button is-small is-info" href="./index.php?acao=editar-visitante&idVisitante=<?=$visitante->getIdVisitante()?>">Editar</a>
+                                <a class="button is-small is-danger" href="./index.php?acao=excluir-visitante&idVisitante=<?=$visitante->getIdVisitante()?>">Excluir</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

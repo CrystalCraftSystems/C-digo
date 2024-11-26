@@ -9,7 +9,7 @@
 <div class="box">
 
     <h1 class="title has-text-centered"><strong>Editar usuário<strong></h1>
-    <form action="./index.php?acao=atualizar-usuarioAdm" method="POST" >
+    <form action="./index.php?acao=atualizar-usuario" method="POST" >
     
          
                 <input class="input" type="hidden" name="idUsuario" value="<?= !empty($usuario) ? $usuario->getIdUsuario():''?>">

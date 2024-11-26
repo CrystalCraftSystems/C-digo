@@ -1,6 +1,6 @@
 <?php
 
-class ExcluirVisitanteAdm{
+class ExcluirVisitante{
     public function retornar(){
     $visitantes = (new VisitantesBanco())->excluirVisitante($_GET['idVisitante']);                   
     if (empty($visitantes)) {
@@ -12,7 +12,7 @@ class ExcluirVisitanteAdm{
     <button class="delete"></button>
         Visitante excluído.
 </div>
-<a href="./index.php?menu=visitantesAdm" class="button is-black is-rounded is-medium is-fullwidth">Voltar!</a>';
+<a href="./index.php?menu=visitantes" class="button is-black is-rounded is-medium is-fullwidth">Voltar!</a>';
     echo $mensagem;
     }
 }

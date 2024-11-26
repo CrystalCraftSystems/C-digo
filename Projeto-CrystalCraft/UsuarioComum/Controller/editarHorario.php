@@ -1,7 +1,7 @@
 <?php
 
 
-class EditarHorarioAdm
+class EditarHorario
 {
     public function retornar()
     {

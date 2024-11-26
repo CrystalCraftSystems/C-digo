@@ -5,15 +5,9 @@ class Moradores{
     private string $idMorador;
     private string $nomeMorador;
     private string $cpfMorador;
-    public  $residencia;
+    public array $residencias = [];
     
- public function setResidencia(Residencias $residencia) { 
-    $this->residencia = $residencia;
- }
 
- public function getidResidencia(): string { 
-    return $this->residencia->getidResidencia();
- }
  
     public function getidMorador():string
     {

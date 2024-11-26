@@ -12,7 +12,7 @@ class ExcluirUsuario{
     <button class="delete"></button>
         Usuário excluído.
 </div>
-<a href="./index.php">Voltar! </a>';
+<a href="./index.php?menu=usuariosAdm" class="button is-black is-rounded is-medium is-fullwidth">Voltar!</a>';
     echo $mensagem;
     }
 }

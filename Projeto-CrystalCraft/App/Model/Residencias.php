@@ -5,16 +5,10 @@ class Residencias{
     public string $idResidencia;
     private int $numResidencia;
     private string $bloco;
-    public $morador;
+    public array $moradores = [];
     
 
-    public function setMorador(Moradores $morador) { 
-        $this->morador = $morador;
-     }
-    
-     public function getIdMorador(): string { 
-        return $this->morador->getIdMorador();
-     }
+  
 
     public function getIdResidencia():string
     {

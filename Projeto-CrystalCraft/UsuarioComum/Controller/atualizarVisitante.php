@@ -1,7 +1,7 @@
 <?php
 
 
-class AtualizarVisitanteAdm
+class AtualizarVisitante
 {
     public function retornar()
     {
@@ -21,7 +21,7 @@ class AtualizarVisitanteAdm
         <button class="delete"></button>
            Visitante atualizado!
     </div>
-    <a href="./index.php?menu=visitantesAdm" class="button is-black is-rounded is-medium is-fullwidth">Voltar!</a>';
+    <a href="./index.php?menu=visitantes" class="button is-black is-rounded is-medium is-fullwidth">Voltar!</a>';
         echo $mensagem;
         }
 }

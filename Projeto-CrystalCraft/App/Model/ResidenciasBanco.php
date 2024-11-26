@@ -11,22 +11,34 @@ class ResidenciasBanco
         
     }
 
+    public function ResidenciasMoradores(string $residenciaId, string $moradorId)
+    {
+        $sql = "INSERT INTO RESIDENCIASMORADORES (RESIDENCIAID, MORADORID) VALUES (:RESIDENCIAID, :MORADORID)";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':RESIDENCIAID', $residenciaId);
+        $stmt->bindValue(':MORADORID', $moradorId);
+        $stmt->execute();
+    }
 
-      public function cadastrarResidencia($idResidencia,$numResidencia, $bloco, Moradores $morador){
-        $sql = "INSERT INTO residencias(idresidencia, numresidencia, bloco, idMorador) values (:i,:n,:b,:m)";
+      public function cadastrarResidencia($idResidencia,$numResidencia, $bloco, $moradorId){
+        $sql = "INSERT INTO residencias(idresidencia, numresidencia, bloco) values (:i,:n,:b)";
         
         $comando = $this->pdo->prepare($sql);
         $comando->bindValue("i",$idResidencia);
         $comando->bindValue("n",$numResidencia);
         $comando->bindValue("b",$bloco);
-        $comando->bindValue("m",$morador->getIdMorador());
- 
-  
-  
-       return $comando->execute();
+       
+        $comando->execute();
+
+        $sql = "INSERT INTO RESIDENCIASMORADORES (RESIDENCIAID, MORADORID) VALUES (:RESIDENCIAID, :MORADORID)";
+        $comando = $this->pdo->prepare($sql);
+        $comando->bindValue(':RESIDENCIAID', $idResidencia);
+        $comando->bindValue(':MORADORID', $moradorId);
+
+        return $comando->execute();
         }
 
-       public function hidratar($array)
+       /*public function hidratar($array)
         {
             $todos = [];
     
@@ -61,6 +73,17 @@ class ResidenciasBanco
           
 
            return $residencia;
+        }*/
+
+        public function listarResidenciaMorador()
+        {
+            $sql = "SELECT  m.IDMORADOR, r.NUMRESIDENCIA, r.BLOCO, r.IDRESIDENCIA AS residencia,  m.NOMEMORADOR AS morador FROM residencias v JOIN residenciasmoradores rm ON r.IDRESIDENCIA = rm.RESIDENCIAID JOIN moradores m ON rm.MORADORID = m.IDMORADOR ORDER BY m.NOMEMORADOR;";
+    
+            $comando = $this->pdo->prepare($sql);
+            $comando->execute();
+    
+          return $comando->fetchAll();
+      
         }
 
         public function ListarResidencia(){
@@ -69,11 +92,11 @@ class ResidenciasBanco
           $comando = $this->pdo->prepare($sql);
           $comando->execute();
           $todasResidencias = $comando->fetchAll(PDO::FETCH_ASSOC);
-          return $this->hidratar($todasResidencias) ;
+          //return $this->hidratar($todasResidencias) ;
          
           }
 
-          public function buscarPorIdResidencia($idResidencia){
+        /*  public function buscarPorIdResidencia($idResidencia){
             $sql = "SELECT * FROM residencias WHERE idResidencia=:i";
     
             $comando = $this->pdo->prepare($sql);
@@ -84,7 +107,7 @@ class ResidenciasBanco
             return $this->hidratarSomenteUm($resultado);
         }
 
-        public function EditarResidencia($idResidencia,$numResidencia, $bloco, Moradores $morador){
+       public function EditarResidencia($idResidencia,$numResidencia, $bloco, Moradores $morador){
             $sql = "INSERT INTO residencias(idresidencia, numresidencia, bloco, idMorador) values (:i,:n,:b,:m)";
   
           
@@ -121,5 +144,5 @@ class ResidenciasBanco
             $comando->bindValue("i",$idResidencia);
         
             return $comando->execute();
-        }
+        }*/
     }

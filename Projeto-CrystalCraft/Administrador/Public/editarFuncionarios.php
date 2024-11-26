@@ -9,7 +9,7 @@
 
 <div class="box">
 <h1 class="title has-text-centered"><strong>Editar funcionário<strong></h1>
-    <form action="./index.php?acao=atualizar-funcionarioAdm" method="post">
+    <form action="./index.php?acao=atualizar-funcionario" method="post">
         
 
     <input class="input" type="hidden" name="idFuncionario" value="<?= !empty($funcionario) ? $funcionario->getIdFuncionario():''?>">

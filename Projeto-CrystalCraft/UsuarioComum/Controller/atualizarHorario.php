@@ -1,7 +1,7 @@
 <?php
 
 
-class AtualizarHorarioAdm
+class AtualizarHorario
 {
     public function retornar()
     {
@@ -22,7 +22,7 @@ class AtualizarHorarioAdm
            Registro atualizado!
     </div>
 
-    <a href="./index.php?menu=horariosAdm" class="button is-black is-rounded is-medium is-fullwidth">Voltar!</a>';
+    <a href="./index.php?menu=horarios" class="button is-black is-rounded is-medium is-fullwidth">Voltar!</a>';
 
     
         echo $mensagem;

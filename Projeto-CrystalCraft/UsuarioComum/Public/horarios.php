@@ -34,8 +34,8 @@
                             <td><?php echo htmlspecialchars($registro->getHoraSaida()); ?></td>
                            
                             <td>
-                                <a class="button is-small is-info" href="./index.php?acao=editar&idRegistro=<?=$registro->getIdRegistro()?>">Editar</a>
-                                <a class="button is-small is-danger" href="./index.php?acao=excluir&idRegistro=<?=$registro->getIdRegistro()?>">Excluir</a>
+                                <a class="button is-small is-info" href="./index.php?acao=editar-horario&idRegistro=<?=$registro->getIdRegistro()?>">Editar</a>
+                                <a class="button is-small is-danger" href="./index.php?acao=excluir-horario&idRegistro=<?=$registro->getIdRegistro()?>">Excluir</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

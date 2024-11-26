@@ -2,21 +2,14 @@
 
 class Horarios{
     
-    public $visitante;
+    public array $visitantes = [];
     private string $idRegistro;
     private string $dataRegistro;
     private string $horaEntrada;
     private string $horaSaida;
     private string $placaVeiculo;
 
-    public function setVisitante (Visitantes $visitante) { 
-        $this->visitante = $visitante;
-     }
-    
-     public function getIdVisitante(): string { 
-        return $this->visitante->getIdVisitante();
-     }
-
+   
 
     public function getIdRegistro():string
     {

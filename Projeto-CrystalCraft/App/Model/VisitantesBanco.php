@@ -41,9 +41,9 @@ class VisitantesBanco
         return $comando->execute();
     }
 
-    public function listaVisitanteMorador()
+    public function ListarVisitanteMorador()
     {
-        $sql = "SELECT  m.IDMORADOR, v.DESCRICAOVISITANTE, v.NOMEVISITANTE AS visitante,  m.NOMEMORADOR AS morador FROM visitantes v JOIN visitantesmoradores vm ON v.IDVISITANTE = vm.VISITANTEID JOIN moradores m ON vm.MORADORID = m.IDMORADOR ORDER BY m.NOMEMORADOR;";
+        $sql = "SELECT  m.IDMORADOR, v.DESCRICAOVISITANTE, v.NOMEVISITANTE, v.IDVISITANTE AS visitante,  m.NOMEMORADOR AS morador FROM visitantes v JOIN visitantesmoradores vm ON v.IDVISITANTE = vm.VISITANTEID JOIN moradores m ON vm.MORADORID = m.IDMORADOR ORDER BY m.NOMEMORADOR;";
 
         $comando = $this->pdo->prepare($sql);
         $comando->execute();
@@ -52,51 +52,9 @@ class VisitantesBanco
   
     }
 
-    public function hidratar($array)
-    {
-        $todos = [];
+   
 
-        foreach ($array as $valor) {
-            $visitante = new Visitantes();
-            $visitante->setIdVisitante($valor['IDVISITANTE']);
-            $visitante->setNomeVisitante($valor['NOMEVISITANTE']);
-            $visitante->setDescricaoVisitante($valor['DESCRICAOVISITANTE']);
-
-         //  $moradores = $this->BuscarMoradoresPeloIdVisitante($valor['IDVISITANTE']);
-           //$visitante->setMoradores($moradores);
-
-            $todos[] = $visitante;
-        }
-        return $todos;
-    }
-
-    public function hidratarSomenteUm($array)
-    {
-
-        $visitante = new Visitantes();
-        $visitante->setIdVisitante($array['IDVISITANTE']);
-        $visitante->setNomeVisitante($array['NOMEVISITANTE']);
-        $visitante->setDescricaoVisitante($array['DESCRICAOVISITANTE']);
-
-        $moradores = $this->BuscarMoradoresPeloIdVisitante($array['IDVISITANTE']);
-        $visitante->setMoradores($moradores);
-
-
-
-        return $visitante;
-    }
-
-    public function ListarVisitante()
-    {
-
-        $sql = "SELECT * FROM visitantes";
-        $comando = $this->pdo->prepare($sql);
-        $comando->execute();
-        $todosVisitantes = $comando->fetchAll(PDO::FETCH_ASSOC);
-        return $this->hidratar($todosVisitantes);
-    }
-
-    public function buscarPorIdVisitante($idVisitante)
+   /* public function buscarPorIdVisitante($idVisitante)
     {
         $sql = "SELECT * FROM visitantes WHERE idvisitante=:i";
 
@@ -144,5 +102,5 @@ class VisitantesBanco
         $comando->bindValue("i", $idVisitante);
 
         return $comando->execute();
-    }
+    }*/
 }

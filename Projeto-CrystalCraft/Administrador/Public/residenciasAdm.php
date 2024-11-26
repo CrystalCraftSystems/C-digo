@@ -24,10 +24,11 @@
                     
                     <?php foreach ($residencias as $residencia): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($residencia->getIdResidencia()); ?></td>
-                            <td><?php echo htmlspecialchars($residencia->getNumResidencia()); ?></td>
-                            <td><?php echo htmlspecialchars($residencia->getBloco()); ?></td>
-                            <td><?php echo htmlspecialchars($residencia->getIdMorador()); ?></td>
+
+                            <td><?php echo htmlspecialchars($visitante['residencia']); ?></td>
+                        <td><?php echo htmlspecialchars($visitante['NUMRESIDENCIA']); ?></td>
+                        <td><?php echo htmlspecialchars($visitante['BLOCO']); ?></td>
+                        <td><?php echo htmlspecialchars($visitante['IDMORADOR']); ?></td>    
                         
                             <td>
                                 <a class="button is-small is-info" href="./index.php?acao=editar-residencia&idResidencia=<?=$residencia->getIdResidencia()?>">Editar</a>

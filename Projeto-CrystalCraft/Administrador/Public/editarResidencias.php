@@ -8,7 +8,7 @@
 
 <div class="box">
 <h1 class="title has-text-centered"><strong>Editar residências e blocos<strong></h1>
-    <form action="./index.php?acao=atualizar-residenciaAdm" method="post">
+    <form action="./index.php?acao=atualizar-residencia" method="post">
     <div class="field">
 
     <input class="input" type="hidden" name="idResidencia" value="<?= !empty($residencia) ? $residencia->getIdResidencia():''?>">

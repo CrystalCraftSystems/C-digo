@@ -8,7 +8,7 @@
 
 <div class="box">
 <h1 class="title has-text-centered"><strong>Editar visitantes<strong></h1>
-    <form action="./index.php?acao=atualizar-visitanteAdm" method="post">
+    <form action="./index.php?acao=atualizar-visitante" method="post">
 
     <input class="input" type="hidden" name="idVisitante" value="<?= !empty($visitante) ? $visitante->getIdVisitante():''?>">
 

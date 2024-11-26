@@ -8,7 +8,7 @@
 
 <div class="box">
 <h1 class="title has-text-centered"><strong>Editar morador<strong></h1>
-    <form action="./index.php?acao=atualizar-moradorAdm" method="post">
+    <form action="./index.php?acao=atualizar-morador" method="post">
 
     <input class="input" type="hidden" name="idMorador" value="<?= !empty($morador) ? $morador->getIdMorador():''?>">
 

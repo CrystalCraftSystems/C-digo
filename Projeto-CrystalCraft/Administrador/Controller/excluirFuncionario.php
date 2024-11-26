@@ -12,7 +12,7 @@ class ExcluirFuncionario{
     <button class="delete"></button>
         Funcionário excluído.
 </div>
-<a href="./index.php">Voltar! </a>';
+  <a href="./index.php?menu=funcionariosAdm" class="button is-black is-rounded is-medium is-fullwidth">Voltar!</a>';
     echo $mensagem;
     }
 }

@@ -21,7 +21,8 @@ class AtualizarFuncionario
         <button class="delete"></button>
             Funcionário atualizado!
     </div>
-    <a href="./index.php?menu=funcionariosAdm">Voltar! </a>';
+    
+    <a href="./index.php?menu=funcionariosAdm" class="button is-black is-rounded is-medium is-fullwidth">Voltar!</a>';
         echo $mensagem;
         }
 }

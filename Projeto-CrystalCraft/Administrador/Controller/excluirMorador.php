@@ -12,7 +12,7 @@ class ExcluirMorador{
     <button class="delete"></button>
         Morador excluído.
 </div>
-<a href="./index.php">Voltar! </a>';
+<a href="./index.php?menu=moradoresAdm" class="button is-black is-rounded is-medium is-fullwidth">Voltar!</a>';
     echo $mensagem;
     }
 }

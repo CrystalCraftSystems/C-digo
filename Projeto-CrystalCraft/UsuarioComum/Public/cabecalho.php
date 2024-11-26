@@ -24,7 +24,6 @@
 <nav class='is-flex has-background-text is-justify-content-space-evenly p-2'>
 
    <a class="has-text-white-bis" href="./index.php?menu=inicio">Início</a>    
-    <a class="has-text-white-bis" href="./index.php?menu=usuarios">Usuários</a>
     <a class="has-text-white-bis" href="./index.php?menu=funcionarios">Funcionários</a>
     <a class="has-text-white-bis" href="./index.php?menu=horarios">Horários</a>
     <a class="has-text-white-bis" href="./index.php?menu=visitantes">Visitantes</a>
