@@ -47,9 +47,7 @@ class Visitantes{
 
     public function setMoradores($moradores)
     {
-        $this->moradores = $moradores;
-
-        return $this;
+        $this->moradores[] = $moradores;
     }
 }
 

@@ -99,12 +99,12 @@
 
     <div class="is-flex is-justify-content-space-evenly">
         <div>
-            <img src="https://t.ctcdn.com.br/DMxRsoFn2EzzWk6WaToT6sIidL8=/i489928.jpeg" width="65px">
+            <img src="https://th.bing.com/th/id/OIP.M5WCnJo0qGtobP0IvkMuPgHaHa?w=768&h=768&rs=1&pid=ImgDetMain" width="65px">
             <br><a href="https://facebook.com" target="_blank">Facebook</a>
         </div>
 
         <div>
-            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="70px"><br>
+            <img src="https://logodownload.org/wp-content/uploads/2017/04/instagram-logo.png" width="70px"><br>
             <a href="https://instagram.com" target="_blank">Instagram</a>
         </div>
     </div>

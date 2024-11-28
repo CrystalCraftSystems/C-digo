@@ -7,10 +7,8 @@ class EditarVisitanteAdm
     {
 
     
-        //$visitante = (new VisitantesBanco)->buscarPorIdVisitante($_GET['idVisitante']);
-       
-
-        $visitante = new EditarVisitante(); $visitante->retornar();
+        $visitante = (new VisitantesBanco)->buscarPorIdVisitante($_GET['idVisitante']);
+     var_dump($visitante);
         require __DIR__."/../Public/editarVisitantes.php";
 
         }

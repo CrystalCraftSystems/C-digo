@@ -21,7 +21,7 @@ var_dump($visitantes); ?>
                 <th>Nome</th>
                     <th>Descrição</th>
                     <th>ID Morador visitado</th>
-                 
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,7 +35,10 @@ var_dump($visitantes); ?>
                         <td><?php echo htmlspecialchars($visitante['NOMEVISITANTE']); ?></td>
                         <td><?php echo htmlspecialchars($visitante['DESCRICAOVISITANTE']); ?></td>
                         <td><?php echo htmlspecialchars($visitante['IDMORADOR']); ?></td>     
-                        
+                        <td>
+                                <a class="button is-small is-info" href="./index.php?acao=editar-visitanteAdm&idVisitante=<?=$visitante['visitante']?>">Editar</a>
+                                <a class="button is-small is-danger" href="./index.php?acao=excluir-visitanteAdm&idVisitante=<?=$visitante['visitante']?>">Excluir</a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
