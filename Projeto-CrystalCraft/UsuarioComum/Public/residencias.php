@@ -16,6 +16,7 @@
                     <th>Número</th>
                     <th>Bloco</th>
                     <th>ID Morador</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>

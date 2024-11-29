@@ -10,27 +10,27 @@
 <h1 class="title has-text-centered"><strong>Editar morador<strong></h1>
     <form action="./index.php?acao=atualizar-morador" method="post">
 
-    <input class="input" type="hidden" name="idMorador" value="<?= !empty($morador) ? $morador->getIdMorador():''?>">
+    <input class="input" type="hidden" name="idMorador" value="<?= !empty($morador) ? $morador['morador']:''?>">
 
     <div class="field">
 
     <label class="label">Nome</label>
     <div class="control">
-        <input class="input" type="text" placeholder="Digite o nome do morador" name="nomeMorador" value= "<?= !empty($morador) ? $morador->getNomeMorador():''?>">
+        <input class="input" type="text" placeholder="Digite o nome do morador" name="nomeMorador" value= "<?= !empty($morador) ? $morador['NOMEMORADOR']:''?>">
     </div>
 </div>
 
 <div class="field">
     <label class="label">CPF</label>
     <div class="control">
-        <input class="input" type="text" placeholder="Digite o CPF do morador" name="cpfMorador" value= "<?= !empty($morador) ? $morador->getCpfMorador():''?>">
+        <input class="input" type="text" placeholder="Digite o CPF do morador" name="cpfMorador" value= "<?= !empty($morador) ? $morador['CPFMORADOR']:''?>">
     </div>
 </div>
 
 <div class="field">
     <label class="label">ID da residência</label>
     <div class="control">
-        <input class="input" type="text" placeholder="Digite o ID da residência do morador" name="idResidenciaMorador" value= "<?= !empty($morador) ? $morador->getIdResidencia():''?>">
+        <input class="input" type="text" placeholder="Digite o ID da residência do morador" name="idResidenciaMorador" value= "<?= !empty($morador) ? $morador['residencia']:''?>">
     </div>
 </div>
 

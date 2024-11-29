@@ -4,7 +4,7 @@ class cadastrarResidencia{
     public function retornar(){
     
       $residencia = (new ResidenciasBanco())->cadastrarResidencia($_POST['idResidencia'],$_POST['numResidencia'], $_POST['bloco'],  $_POST['idMoradorResidencia']);
-      if($residencia){
+      if($residencia and  $_POST['idMoradorResidencia']==Null||($_POST['idMoradorResidencia'])!=Null){
         $mensagem = '
         <div class="notification is-success">
             <button class="delete"></button>

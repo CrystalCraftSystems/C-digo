@@ -17,33 +17,33 @@
             </div>
         </div>
 
-        <input class="input" type="hidden" name="idRegistro" value="<?= !empty($registro) ? $registro->getIdRegistro():''?>">
+        <input class="input" type="hidden" name="idRegistro" value="<?= !empty($registro) ? $registro['horario']:''?>">
 
         <div class="field">
             <label class="label">Placa do veículo</label>
             <div class="control">
-                <input class="input" type="text" placeholder="Digite a placa do veículo" name="placaVeiculo" value= "<?= !empty($registro) ? $registro->getPlacaVeiculo():''?>">
+                <input class="input" type="text" placeholder="Digite a placa do veículo" name="placaVeiculo" value= "<?= !empty($registro) ? $registro['PLACAVEICULO']:''?>">
             </div>
         </div>
 
         <div class="field">
             <label class="label">Data do registro</label>
             <div class="control">
-                <input class="input" type="date" placeholder="Digite a data do registro" name="dataRegistro" value= "<?= !empty($registro) ? $registro->getDataRegistro():''?>">
+                <input class="input" type="date" placeholder="Digite a data do registro" name="dataRegistro" value= "<?= !empty($registro) ? $registro['DATAREGISTRO']:''?>">
             </div>
         </div>
 
         <div class="field">
             <label class="label">Horário de entrada</label>
             <div class="control">
-                <input class="input" type="time" placeholder="Digite o horário da entrada" name="horaEntrada" value= "<?= !empty($registro) ? $registro->getHoraEntrada():''?>">
+                <input class="input" type="time" placeholder="Digite o horário da entrada" name="horaEntrada" value= "<?= !empty($registro) ? $registro['HORAENTRADA']:''?>">
             </div>
         </div>
 
         <div class="field">
             <label class="label">Horário saída</label>
             <div class="control">
-                <input class="input" type="time" placeholder="Digite o horário da saída" name="horaSaida" value= "<?= !empty($registro) ? $registro->getHoraSaida():''?>">
+                <input class="input" type="time" placeholder="Digite o horário da saída" name="horaSaida" value= "<?= !empty($registro) ? $registro['HORASAIDA']:''?>">
             </div>
         </div>
 

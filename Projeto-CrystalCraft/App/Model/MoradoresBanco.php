@@ -10,40 +10,38 @@ class MoradoresBanco
         $this->pdo = $pdo;
     }
 
-
-    public function cadastrarMorador($idMorador, $nomeMorador, $cpfMorador, Residencias $residencia )
+    public function MoradoresResidencias(string $moradorId, string $residenciaId)
     {
-        $sql = "INSERT INTO moradores(idmorador, nomemorador, cpfmorador, idresidencia) values (:i,:n,:c,:r)";
+        $sql = "INSERT INTO MORADORESRESIDENCIAS (MORADORID, RESIDENCIAID) VALUES (:MORADORID, :RESIDENCIAID)";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':MORADORID', $moradorId);
+        $stmt->bindValue(':RESIDENCIAID', $residenciaId);
+        $stmt->execute();
+    }
 
+    public function cadastrarMorador($idMorador, $nomeMorador, $cpfMorador, $residenciaId)
+    {
+       
+        $sql = "INSERT INTO moradores(idmorador, nomemorador, cpfmorador) values (:i,:n,:c)";
+
+        
         $comando = $this->pdo->prepare($sql);
         $comando->bindValue("i", $idMorador);
         $comando->bindValue("n", $nomeMorador);
         $comando->bindValue("c", $cpfMorador);
-        $comando->bindValue("r", $residencia->getIdResidencia());
+      
+        $comando->execute();
+
+        $sql = "INSERT INTO MORADORESRESIDENCIAS (MORADORID, RESIDENCIAID) VALUES (:MORADORID, :RESIDENCIAID)";
+        $comando = $this->pdo->prepare($sql);
+        $comando->bindValue(':MORADORID', $idMorador);
+        $comando->bindValue(':RESIDENCIAID', $residenciaId);
 
         return $comando->execute();
     }
 
-    public function hidratar($array)
-    {
-        $todos = [];
-        foreach ($array as $valor) {
-            $morador = new Moradores();
-            $morador->setIdMorador($valor['IDMORADOR']);
-            $morador->setNomeMorador($valor['NOMEMORADOR']);
-            $morador->setCpfMorador($valor['CPFMORADOR']);
 
-
-
-            $residencia = new Residencias();
-            $residencia->setIdResidencia($valor['IDRESIDENCIA']);
-            $morador->setResidencia($residencia);
-            $todos[] = $morador;
-        }
-       
-
-        return $todos;
-    }
+ 
 
 
 
@@ -56,59 +54,66 @@ class MoradoresBanco
         $morador->setNomeMorador($array['NOMEMORADOR']);
         $morador->setCpfMorador($array['CPFMORADOR']);
 
-        $residencia = new Residencias();
-        $residencia->setIdResidencia($array['IDRESIDENCIA']);
-        $morador->setResidencia($residencia);
-
 
         return $morador;
     }
 
     public function ListarMorador()
     {
-
-        $sql = "SELECT * FROM moradores";
+        $sql = "SELECT  r.IDRESIDENCIA, m.CPFMORADOR, m.NOMEMORADOR, m.IDMORADOR AS morador,  r.IDRESIDENCIA AS residencia FROM moradores m JOIN moradoresresidencias mr ON m.IDMORADOR = mr.MORADORID JOIN residencias r ON mr.RESIDENCIAID = r.IDRESIDENCIA ORDER BY m.NOMEMORADOR;";
         $comando = $this->pdo->prepare($sql);
         $comando->execute();
-        $todosMoradores = $comando->fetchAll(PDO::FETCH_ASSOC);
-        return $this->hidratar($todosMoradores);
+
+      return $comando->fetchAll();
+  
     }
+
     public function buscarPorIdMorador($idMorador)
     {
-        $sql = "SELECT * FROM moradores WHERE idMorador=:i";
+        $sql = "SELECT  r.IDRESIDENCIA, m.CPFMORADOR, m.NOMEMORADOR, m.IDMORADOR AS morador,  r.IDRESIDENCIA AS residencia FROM moradores m JOIN moradoresresidencias mr ON m.IDMORADOR = mr.MORADORID JOIN residencias r ON mr.RESIDENCIAID = r.IDRESIDENCIA ORDER BY m.NOMEMORADOR;";
 
         $comando = $this->pdo->prepare($sql);
         $comando->bindValue("i", $idMorador);
         $comando->execute();
-        $resultado = $comando->fetch(PDO::FETCH_ASSOC);
 
-        return $this->hidratarSomenteUm($resultado);
+        return  $comando->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function EditarMorador($idMorador, $nomeMorador, $cpfMorador, Residencias $residencia)
+    public function EditarMorador($idMorador, $nomeMorador, $cpfMorador, $residenciaId)
     {
-        $sql = "INSERT INTO moradores(idmorador, nomemorador, cpfmorador, idresidencia) values (:i,:n,:c,:r)";
-
-        $comando = $this->pdo->prepare($sql);
-        $comando->bindValue("i", $idMorador);
-        $comando->bindValue("n", $nomeMorador);
-        $comando->bindValue("c", $cpfMorador);
-        $comando->bindValue("r",$residencia->getIdResidencia());
-
-        return $comando->execute();
+        
+        $sql = "UPDATE moradores SET nomemorador = :nome, cpfmorador = :cpf WHERE idmorador = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':nome', $nomeMorador);
+        $stmt->bindValue(':cpf', $cpfMorador);
+        $stmt->bindValue(':id', $idMorador);
+        $stmt->execute();
+    
+        $sql = "UPDATE moradoresresidencias SET residenciaid = :residenciaId WHERE moradorid = :moradorId";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':residenciaId', $residenciaId);
+        $stmt->bindValue(':moradorId', $idMorador);
+    
+        return $stmt->execute();
     }
 
-    public function AtualizarMorador($idMorador, $nomeMorador, $cpfMorador, Residencias $residencia)
+    public function AtualizarMorador($idMorador, $nomeMorador, $cpfMorador, $residenciaId)
     {
-        $sql = "UPDATE moradores set  nomemorador=:n, cpfmorador = :c, idresidencia = :r where idmorador=:i";
-
-        $comando = $this->pdo->prepare($sql);
-        $comando->bindValue("i", $idMorador);
-        $comando->bindValue("n", $nomeMorador);
-        $comando->bindValue("c", $cpfMorador);
-        $comando->bindValue("r", $residencia->getIdResidencia());
-
-        return $comando->execute();
+        
+        $sql = "UPDATE moradores SET nomemorador = :nome, cpfmorador = :cpf WHERE idmorador = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':nome', $nomeMorador);
+        $stmt->bindValue(':cpf', $cpfMorador);
+        $stmt->bindValue(':id', $idMorador);
+        $stmt->execute();
+ 
+        
+        $sql = "UPDATE moradoresresidencias SET residenciaid = :residenciaId WHERE moradorid = :moradorId";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':residenciaId', $residenciaId);
+        $stmt->bindValue(':moradorId', $idMorador);
+    
+        return $stmt->execute();
     }
 
     public function ExcluirMorador($idMorador)

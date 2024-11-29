@@ -66,7 +66,7 @@ class VisitantesBanco
 
     public function buscarPorIdVisitante($idVisitante)
     {
-        $sql = "SELECT  m.IDMORADOR, v.DESCRICAOVISITANTE, v.NOMEVISITANTE, v.IDVISITANTE ,  m.NOMEMORADOR  FROM visitantes v JOIN visitantesmoradores vm ON v.IDVISITANTE = :i JOIN moradores m ON vm.MORADORID = m.IDMORADOR ORDER BY m.NOMEMORADOR";
+        $sql = "SELECT  m.IDMORADOR, v.DESCRICAOVISITANTE, v.NOMEVISITANTE, v.IDVISITANTE ,  m.NOMEMORADOR  FROM visitantes v JOIN visitantesmoradores vm ON v.IDVISITANTE = :i JOIN moradores m ON vm.MORADORID = m.IDMORADOR ORDER BY v.NOMEVISITANTE";
         
         $comando = $this->pdo->prepare($sql);
         $comando->bindValue("i", $idVisitante);
@@ -75,47 +75,47 @@ class VisitantesBanco
         return  $comando->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function EditarVisitante($idVisitante, $nomeVisitante, $descricaoVisitante,$moradorId)
-    {
-        $sql = "INSERT INTO visitantes(idvisitante, nomevisitante, descricaovisitante) values (:i,:n,:d)";
+    public function EditarVisitante($idVisitante, $nomeVisitante, $descricaoVisitante, $moradorId)
+{
+    
+    $sql = "UPDATE visitantes SET nomevisitante = :nome, descricaovisitante = :descricao WHERE idvisitante = :id";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':nome', $nomeVisitante);
+    $stmt->bindValue(':descricao', $descricaoVisitante);
+    $stmt->bindValue(':id', $idVisitante);
+    $stmt->execute();
 
-        $comando = $this->pdo->prepare($sql);
-        $comando->bindValue("i", $idVisitante);
-        $comando->bindValue("n", $nomeVisitante);
-        $comando->bindValue("d", $descricaoVisitante);
-       
+    
+    $sql = "UPDATE visitantesmoradores SET moradorid = :moradorId WHERE visitanteid = :visitanteId";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':moradorId', $moradorId);
+    $stmt->bindValue(':visitanteId', $idVisitante);
 
+    return $stmt->execute();
+}
 
-      $comando->execute();
-
-        $sql = "INSERT INTO VISITANTESMORADORES (VISITANTEID, MORADORID) VALUES (:VISITANTEID, :MORADORID)";
-        $comando = $this->pdo->prepare($sql);
-        $comando->bindValue(':VISITANTEID', $idVisitante);
-        $comando->bindValue(':MORADORID', $moradorId);
-
-        return $comando->execute();
-    }
+  
 
     public function AtualizarVisitante($idVisitante, $nomeVisitante, $descricaoVisitante, $moradorId)
-    {
-        $sql = "UPDATE visitantes set  nomevisitante=:n, descricaovisitante = :d, idmorador = :m where idvisitante=:i";
+{
+    // Atualiza os dados do visitante na tabela visitantes
+    $sql = "UPDATE visitantes SET nomevisitante = :nome, descricaovisitante = :descricao WHERE idvisitante = :id";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':nome', $nomeVisitante);
+    $stmt->bindValue(':descricao', $descricaoVisitante);
+    $stmt->bindValue(':id', $idVisitante);
+    $stmt->execute();
 
-        $comando = $this->pdo->prepare($sql);
-        $comando->bindValue("i", $idVisitante);
-        $comando->bindValue("n", $nomeVisitante);
-        $comando->bindValue("d", $descricaoVisitante);
-        $comando->bindValue("m", $moradorId);
+    // Atualiza a associação do visitante com o morador na tabela visitantesmoradores
+    $sql = "UPDATE visitantesmoradores SET moradorid = :moradorId WHERE visitanteid = :visitanteId";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':moradorId', $moradorId);
+    $stmt->bindValue(':visitanteId', $idVisitante);
+
+    return $stmt->execute();
+}
 
 
-     $comando->execute();
-
-     $sql = "UPDATE VISITANTESMORADORES SET VISITANTEID=:V, MORADORID=:M WHERE VISITANTEID= :V";
-        $comando = $this->pdo->prepare($sql);
-        $comando->bindValue(':V', $idVisitante);
-        $comando->bindValue(':M', $moradorId);
-
-        return $comando->execute();
-    }
 
     public function ExcluirVisitante($idVisitante)
     {

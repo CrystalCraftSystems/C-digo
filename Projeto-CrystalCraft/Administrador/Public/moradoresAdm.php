@@ -16,6 +16,7 @@
                     <th>Nome</th>
                     <th>CPF</th>
                     <th>ID residência</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,17 +25,20 @@
                     
                     <?php foreach ($moradores as $morador): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($morador->getIdMorador()); ?></td>
-                            <td><?php echo htmlspecialchars($morador->getNomeMorador()); ?></td>
-                            <td><?php echo htmlspecialchars($morador->getCpfMorador()); ?></td>
-                            <td><?php echo htmlspecialchars ($morador->getIdResidencia()); ?></td>
+                            <td><?php echo htmlspecialchars($morador['morador']); ?></td>
+                            <td><?php echo htmlspecialchars($morador['NOMEMORADOR']); ?></td>
+                            <td><?php echo htmlspecialchars($morador['CPFMORADOR']); ?></td>
+                            <td><?php echo htmlspecialchars($morador['IDRESIDENCIA']); ?></td>
+
                            
                             <td>
-                                <a class="button is-small is-info" href="./index.php?acao=editar-morador&idMorador=<?=$morador->getIdMorador()?>">Editar</a>
-                                <a class="button is-small is-danger" href="./index.php?acao=excluir-morador&idMorador=<?=$morador->getIdMorador()?>">Excluir</a>
+                                <a class="button is-small is-info" href="./index.php?acao=editar-morador&idMorador=<?=$morador['morador']?>">Editar</a>
+                                <a class="button is-small is-danger" href="./index.php?acao=excluir-morador&idMorador=<?=$morador['morador']?>">Excluir</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
+
+                   
                 <?php else: ?>
                     <tr>
                         <td colspan="4" class="has-text-centered"><strong>Base de dados vazia!</strong></td>

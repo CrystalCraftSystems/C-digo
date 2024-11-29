@@ -11,29 +11,28 @@
     <form action="./index.php?acao=atualizar-residencia" method="post">
     <div class="field">
 
-    <input class="input" type="hidden" name="idResidencia" value="<?= !empty($residencia) ? $residencia->getIdResidencia():''?>">
+    <input class="input" type="hidden" name="idResidencia" value= "<?= !empty($residencia) ? $residencia['IDRESIDENCIA']:''?>">
 
 <div class="field">
     <label class="label">Número da residência</label>
     <div class="control">
-        <input class="input" type="text" placeholder="Digite o número da residência" name="numResidencia" value= "<?= !empty($residencia) ? $residencia->getNumResidencia():''?>">
+        <input class="input" type="text" placeholder="Digite o número da residência" name="numResidencia" value= "<?= !empty($residencia) ? $residencia['NUMRESIDENCIA']:''?>">
     </div>
 </div>
 
 <div class="field">
     <label class="label">Bloco</label>
     <div class="control">
-        <input class="input" type="text" placeholder="Digite o bloco" name="bloco" value= "<?= !empty($residencia) ? $residencia->getBloco():''?>">
+        <input class="input" type="text" placeholder="Digite o bloco" name="bloco" value= "<?= !empty($residencia) ? $residencia['BLOCO']:''?>">
     </div>
 </div>
 
 <div class="field">
     <label class="label">ID do morador</label>
     <div class="control">
-        <input class="input" type="text" placeholder="Digite o ID do morador" name="idMoradorResidencia" value= "<?= !empty($residencia) ? $residencia->getIdMorador():''?>">
+        <input class="input" type="text" placeholder="Digite o ID do morador" name="idMoradorResidencia" value="<?= isset($residencia['IDMORADOR']) && $residencia['IDMORADOR'] !== 'NULL' ?>">
     </div>
 </div>
-
 
 
 

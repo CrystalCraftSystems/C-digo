@@ -16,6 +16,7 @@
                     <th>CPF</th>
                     <th>Data de nascimento</th>
                     <th>Função</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>

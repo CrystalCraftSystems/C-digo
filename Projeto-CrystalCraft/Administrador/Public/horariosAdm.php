@@ -18,6 +18,7 @@
                     <th>Data do registro</th>
                     <th>Hora da entrada</th>
                     <th>Hora da saída</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,17 +27,19 @@
                     
                     <?php foreach ($registros as $registro): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($registro->getIdVisitante()); ?></td>
-                            <td><?php echo htmlspecialchars($registro->getIdRegistro()); ?></td>
-                            <td><?php echo htmlspecialchars($registro->getPlacaVeiculo()); ?></td>
-                            <td><?php echo htmlspecialchars($registro->getDataRegistro()); ?></td>
-                            <td><?php echo htmlspecialchars($registro->getHoraEntrada()); ?></td>
-                            <td><?php echo htmlspecialchars($registro->getHoraSaida()); ?></td>
+                            <td><?php echo htmlspecialchars($registro['visitante']); ?></td>
+                            <td><?php echo htmlspecialchars($registro['horario']); ?></td>
+                            <td><?php echo htmlspecialchars($registro['PLACAVEICULO']); ?></td>
+                            <td><?php echo htmlspecialchars($registro['DATAREGISTRO']); ?></td>
+                            <td><?php echo htmlspecialchars($registro['HORAENTRADA']); ?></td>
+                            <td><?php echo htmlspecialchars($registro['HORASAIDA']); ?></td>
                            
                             <td>
-                                <a class="button is-small is-info" href="./index.php?acao=editar-horarioAdm&idRegistro=<?=$registro->getIdRegistro()?>">Editar</a>
-                                <a class="button is-small is-danger" href="./index.php?acao=excluir-horarioAdm&idRegistro=<?=$registro->getIdRegistro()?>">Excluir</a>
+                                <a class="button is-small is-info" href="./index.php?acao=editar-horarioAdm&idRegistro=<?=$registro['visitante']?>">Editar</a>
+                                <a class="button is-small is-danger" href="./index.php?acao=excluir-horarioAdm&idRegistro=<?=$registro['visitante']?>">Excluir</a>
                             </td>
+
+ 
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>

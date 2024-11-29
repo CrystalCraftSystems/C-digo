@@ -19,6 +19,7 @@
                     <th>CPF</th>
                     <th>Data de nascimento</th>
                     <th>Permissão Especial</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>

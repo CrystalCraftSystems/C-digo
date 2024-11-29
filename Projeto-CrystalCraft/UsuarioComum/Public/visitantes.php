@@ -15,22 +15,24 @@
                     <th>Nome</th>
                     <th>Descrição</th>
                     <th>ID Morador </th>
+                    <th>Ações</th>
                    
                 </tr>
             </thead>
             <tbody>
           
-                <?php if (isset($visitantes)): ?>
+            <?php if (isset($visitantes)): ?>
                     
                     <?php foreach ($visitantes as $visitante): ?>
                         <tr>
+
                         <td><?php echo htmlspecialchars($visitante['visitante']); ?></td>
                         <td><?php echo htmlspecialchars($visitante['NOMEVISITANTE']); ?></td>
                         <td><?php echo htmlspecialchars($visitante['DESCRICAOVISITANTE']); ?></td>
-                        <td><?php echo htmlspecialchars($visitante['IDMORADOR']); ?></td>    
-                            <td>
-                                <a class="button is-small is-info" href="./index.php?acao=editar-visitante&idVisitante=<?=$visitante->getIdVisitante()?>">Editar</a>
-                                <a class="button is-small is-danger" href="./index.php?acao=excluir-visitante&idVisitante=<?=$visitante->getIdVisitante()?>">Excluir</a>
+                        <td><?php echo htmlspecialchars($visitante['IDMORADOR']); ?></td>     
+                        <td>
+                                <a class="button is-small is-info" href="./index.php?acao=editar-visitanteAdm&idVisitante=<?=$visitante['visitante']?>">Editar</a>
+                                <a class="button is-small is-danger" href="./index.php?acao=excluir-visitanteAdm&idVisitante=<?=$visitante['visitante']?>">Excluir</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

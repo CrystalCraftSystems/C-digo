@@ -20,13 +20,16 @@
         padding-left: 5px;
     }
 
-    .redessociais {
+    .manual {
         background-color: var(--bulma-text-85);
         padding: 5px;
+        text-align: center;
+       
     }
 
     a {
-        color: white;
+        color: black;
+       
     }
 
 
@@ -93,21 +96,15 @@
 <p>(21) 3333-4444</p>
 
 <br>
-<h2><strong>➤ Siga-nos nas redes sociais:</strong></h2> <br>
+<h2><strong>➤ Clique e tenha acesso ao manual do usuário:</strong></h2> <br>
 
-<div class="redessociais">
-
-    <div class="is-flex is-justify-content-space-evenly">
-        <div>
-            <img src="https://th.bing.com/th/id/OIP.M5WCnJo0qGtobP0IvkMuPgHaHa?w=768&h=768&rs=1&pid=ImgDetMain" width="65px">
-            <br><a href="https://facebook.com" target="_blank">Facebook</a>
-        </div>
-
-        <div>
-            <img src="https://logodownload.org/wp-content/uploads/2017/04/instagram-logo.png" width="70px"><br>
-            <a href="https://instagram.com" target="_blank">Instagram</a>
-        </div>
-    </div>
+<div class="manual">
+        
+        
+            <img src="ManualUsuario.png" width="70px"><br>
+            <a href="https://docs.google.com/document/d/1kjOXHo16ZUG6R8t75eo___xcRlp3tILN24neX1WWA-I/edit?usp=sharing" target="_blank"><strong>Manual do usuario </strong></a>
+       
+    
 </div>
 
 

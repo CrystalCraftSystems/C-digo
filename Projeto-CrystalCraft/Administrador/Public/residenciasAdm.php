@@ -16,6 +16,7 @@
                     <th>Número</th>
                     <th>Bloco</th>
                     <th>ID Morador</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,14 +26,13 @@
                     <?php foreach ($residencias as $residencia): ?>
                         <tr>
 
-                            <td><?php echo htmlspecialchars($visitante['residencia']); ?></td>
-                        <td><?php echo htmlspecialchars($visitante['NUMRESIDENCIA']); ?></td>
-                        <td><?php echo htmlspecialchars($visitante['BLOCO']); ?></td>
-                        <td><?php echo htmlspecialchars($visitante['IDMORADOR']); ?></td>    
-                        
+                            <td><?php echo htmlspecialchars($residencia['residencia']); ?></td>
+                        <td><?php echo htmlspecialchars($residencia['NUMRESIDENCIA']); ?></td>
+                        <td><?php echo htmlspecialchars($residencia['BLOCO']); ?></td>
+                        </td> <td><?php echo htmlspecialchars($residencia['IDMORADOR'] !== 'NULL' ? $residencia['IDMORADOR'] : ''); ?>                        
                             <td>
-                                <a class="button is-small is-info" href="./index.php?acao=editar-residencia&idResidencia=<?=$residencia->getIdResidencia()?>">Editar</a>
-                                <a class="button is-small is-danger" href="./index.php?acao=excluir-residencia&idResidencia=<?=$residencia->getIdResidencia()?>">Excluir</a>
+                                <a class="button is-small is-info" href="./index.php?acao=editar-residencia&idResidencia=<?=$residencia['residencia']?>">Editar</a>
+                                <a class="button is-small is-danger" href="./index.php?acao=excluir-residencia&idResidencia=<?=$residencia['residencia']?>">Excluir</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

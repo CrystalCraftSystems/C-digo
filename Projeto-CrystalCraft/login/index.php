@@ -66,7 +66,7 @@ require __DIR__ . "/../UsuarioComum/Controller/exibirVisitante.php";
 require __DIR__ . "/../UsuarioComum/Controller/exibirMorador.php";
 require __DIR__ . "/../UsuarioComum/Controller/exibirResidencia.php";
 require __DIR__ . "/../UsuarioComum/Controller/editarHorario.php";
-//require __DIR__ . "/../UsuarioComum/Controller/editarVisitante.php";
+require __DIR__ . "/../UsuarioComum/Controller/editarVisitante.php";
 require __DIR__ . "/../UsuarioComum/Controller/excluirVisitante.php";
 require __DIR__ . "/../UsuarioComum/Controller/excluirHorario.php";
 require __DIR__ . "/../UsuarioComum/Controller/atualizarVisitante.php";
@@ -341,14 +341,14 @@ if (isset($_GET['menu'])) {
 //Sessões:
 
 if (isset($_SESSION['login'])) {
-   if ($_SESSION['login'] == true && $_SESSION['adm'] == true && (isset($_GET['acao']) && $_SESSION['login']) && (($_GET['acao']) != 'editar-usuario') && (($_GET['acao']) != 'editar-funcionario') && (($_GET['acao']) != 'editar-horario') && (($_GET['acao']) != 'editar-visitante') && (($_GET['acao']) != 'editar-morador') && (($_GET['acao']) != 'editar-residencia') && (($_GET['acao']) != 'atualizar-usuario') && (($_GET['acao']) != 'atualizar-funcionario') && (($_GET['acao']) != 'atualizar-horario') && (($_GET['acao']) != 'atualizar-visitante') && (($_GET['acao']) != 'atualizar-morador') && (($_GET['acao']) != 'atualizar-residencia')) {
+   if ($_SESSION['login'] == true && $_SESSION['adm'] == true && (isset($_GET['acao']) && $_SESSION['login']) && (($_GET['acao']) != 'editar-usuario') && (($_GET['acao']) != 'editar-funcionario') && (($_GET['acao']) != 'editar-horarioAdm') && (($_GET['acao']) != 'editar-visitanteAdm') && (($_GET['acao']) != 'editar-morador') && (($_GET['acao']) != 'editar-residencia') && (($_GET['acao']) != 'atualizar-usuario') && (($_GET['acao']) != 'atualizar-funcionario') && (($_GET['acao']) != 'atualizar-horarioAdm') && (($_GET['acao']) != 'atualizar-visitanteAdm') && (($_GET['acao']) != 'atualizar-morador') && (($_GET['acao']) != 'atualizar-residencia')&&(($_GET['acao']) != 'excluir-usuario') &&(($_GET['acao']) != 'excluir-funcionario') &&(($_GET['acao']) != 'excluir-horarioAdm') &&(($_GET['acao']) != 'excluir-visitanteAdm') &&(($_GET['acao']) != 'excluir-morador') &&(($_GET['acao']) != 'excluir-residencia')) {
 
       $usuarios = (new UsuariosBanco())->ListarUsuario();
       require __DIR__ . "/../Administrador/Public/usuariosAdm.php";
 
    }
 
-   if (($_SESSION['login'] == true && $_SESSION['adm'] == false) && (isset($_GET['acao']) && $_SESSION['login']) && (($_GET['acao']) != 'editar-horario') && (($_GET['acao']) != 'editar-visitante') && (($_GET['acao']) != 'atualizar-horario') && (($_GET['acao']) != 'atualizar-visitante')) {
+   if (($_SESSION['login'] == true && $_SESSION['adm'] == false) && (isset($_GET['acao']) && $_SESSION['login']) && (($_GET['acao']) != 'editar-horario') && (($_GET['acao']) != 'editar-visitante') && (($_GET['acao']) != 'atualizar-horario') && (($_GET['acao']) != 'atualizar-visitante')&&(($_GET['acao']) != 'excluir-horario') && (($_GET['acao']) != 'excluir-visitante')){
       require __DIR__ . "/../UsuarioComum/Public/inicio.php";
    }
 } else {
